@@ -1,4 +1,4 @@
-from multiprocessing.process import current_process
+# from multiprocessing.process import current_process
 
 
 class Node:
@@ -70,13 +70,13 @@ class LinkedList:
         return False
 
 
-linked_list = LinkedList()
+# linked_list = LinkedList()
 
-linked_list.add_to_head(0)
-linked_list.add_to_tail(1)
+# linked_list.add_to_head(0)
+# linked_list.add_to_tail(1)
 
-print(f'does our LL contain 0? {linked_list.contains(0)}')
-print(f'does our LL contain 1? {linked_list.contains(1)}')
+# print(f'does our LL contain 0? {linked_list.contains(0)}')
+# print(f'does our LL contain 1? {linked_list.contains(1)}')
 
-linked_list.add_to_head(2)
-print(f'the start of the list is {linked_list.head.value}')
+# linked_list.add_to_head(2)
+# print(f'the start of the list is {linked_list.head.value}')
