@@ -47,11 +47,20 @@ class LinkedList:
             head_value = self.head.value
             self.head = None
             self.tail = None
+
             return head_value
         # otherwise we have more elements in the list
         head_value = self.head.value
         self.head = self.head.next_node
         return head_value
+
+    def len(self):
+        temp = self.head
+        count = 0
+        while(temp):
+            count += 1
+            temp = temp.next_node
+        return count
 
     def contains(self, value):
         if self.head is None:
