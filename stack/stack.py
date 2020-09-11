@@ -29,8 +29,8 @@ class Stack:
     def push(self, value):
         return self.storage.add_to_head(value)
 
-    def pop(self):
-        pass
+    def pop(self, value):
+        return self.storage.remove_head(value)
 
 
 linked_list = Stack()
