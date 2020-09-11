@@ -12,7 +12,6 @@ return elements in Last In First Out order.
 """
 
 from singly_linked_list import LinkedList
-from singly_linked_list import Node
 
 
 class Stack:
