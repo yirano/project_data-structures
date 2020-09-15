@@ -22,7 +22,7 @@ class Queue:
         self.storage = LinkedList()
 
     def __len__(self):
-        return f'{self.storage.len()}'
+        return self.storage.len()
 
     def __str__(self):
         return f'{self.storage.head.value}'
@@ -30,8 +30,8 @@ class Queue:
     def enqueue(self, value):
         return self.storage.add_to_tail(value)
 
-    def dequeue(self, value):
-        return self.storage.remove_head(value)
+    def dequeue(self):
+        return self.storage.remove_head()
 
 
 linked_list = Queue()
