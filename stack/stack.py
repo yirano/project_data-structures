@@ -19,17 +19,17 @@ class Stack:
         self.size = 0
         self.storage = LinkedList()
 
-    def __str__(self):
-        return f'YOUR STUFF {self.storage.head.value}'
+    # def __str__(self):
+    #     return f'YOUR STUFF {self.storage.head.value}'
 
-    def len(self):
-        return f'{self.storage.len()}'
+    def __len__(self):
+        return self.storage.len()
 
     def push(self, value):
         return self.storage.add_to_head(value)
 
-    def pop(self, value):
-        return self.storage.remove_head(value)
+    def pop(self):
+        return self.storage.remove_head()
 
 
 linked_list = Stack()
@@ -42,8 +42,8 @@ linked_list = Stack()
 
 # linked_list.add_to_head(2)
 # print(f'the start of the list is {linked_list.head.value}')
-linked_list.push(1)
-linked_list.push(2)
+# linked_list.push(1)
+# linked_list.push(2)
 # linked_list.pop(1)
-print(f'HELOO --> {linked_list.len()}')
+# print(f'HELOO --> {linked_list.len()}')
 # print(f'HELOO --> {linked_list}')
