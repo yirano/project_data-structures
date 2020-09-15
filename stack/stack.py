@@ -17,19 +17,19 @@ from singly_linked_list import LinkedList
 class Stack:
     def __init__(self):
         self.size = 0
-        self.storage = []
+        self.storage = LinkedList()
 
     def __len__(self):
         return self.size
 
     def push(self, value):
         self.size += 1
-        self.storage.insert(0, value)
+        self.storage.add_to_head(value)
 
     def pop(self):
-        if len(self.storage) == 0:
+        if self.size == 0:
             return None
         self.size -= 1
         # remove the first element in storage
-        node = self.storage.pop(0)
+        node = self.storage.remove_head()
         return node
