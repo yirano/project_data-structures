@@ -32,10 +32,3 @@ class Queue:
 
     def dequeue(self):
         return self.storage.remove_head()
-
-
-linked_list = Queue()
-linked_list.enqueue(4)
-linked_list.enqueue(4)
-print(linked_list)
-print(linked_list.__len__())

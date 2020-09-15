@@ -17,33 +17,19 @@ from singly_linked_list import LinkedList
 class Stack:
     def __init__(self):
         self.size = 0
-        self.storage = LinkedList()
-
-    # def __str__(self):
-    #     return f'YOUR STUFF {self.storage.head.value}'
+        self.storage = []
 
     def __len__(self):
-        return self.storage.len()
+        return self.size
 
     def push(self, value):
-        return self.storage.add_to_head(value)
+        self.size += 1
+        self.storage.insert(0, value)
 
     def pop(self):
-        return self.storage.remove_head()
-
-
-linked_list = Stack()
-
-# linked_list.add_to_head(0)
-# linked_list.add_to_tail(1)
-
-# print(f'does our LL contain 0? {linked_list.contains(0)}')
-# print(f'does our LL contain 1? {linked_list.contains(1)}')
-
-# linked_list.add_to_head(2)
-# print(f'the start of the list is {linked_list.head.value}')
-# linked_list.push(1)
-# linked_list.push(2)
-# linked_list.pop(1)
-# print(f'HELOO --> {linked_list.len()}')
-# print(f'HELOO --> {linked_list}')
+        if len(self.storage) == 0:
+            return None
+        self.size -= 1
+        # remove the first element in storage
+        node = self.storage.pop(0)
+        return node
