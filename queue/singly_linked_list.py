@@ -64,7 +64,7 @@ class LinkedList:
         self.head = self.head.next_node
         return head_value
 
-    def len(self):
+    def __len__(self):
         temp = self.head
         count = 0
         while(temp):
