@@ -84,10 +84,13 @@ class DoublyLinkedList:
         else:
             new_node.prev = self.tail
             self.tail = new_node
+            self.head.next = new_node.prev
 
         print(">>>>>>>>>>>>>>> ROUND: ", self.rounds)
         print('Add to tail: ', self.tail.value)
         print('>> Head value? ', self.head.value)
+        print('>> Head next value? ', self.head.next.value)
+        print('>> Tail prev value? ', self.tail.prev.value)
         print('>> New tail value? ', self.tail.value)
         # print('>> Head next value? ', self.head.next.value)
     """
