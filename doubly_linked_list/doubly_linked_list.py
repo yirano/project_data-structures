@@ -141,13 +141,13 @@ class DoublyLinkedList:
             self.tail = node
             self.head = node.prev
         else:
-            # node.prev = self.tail
-            # self.tail = node
+            node.prev = self.tail
+            self.tail = node
             pass
         print(">>>>>>>>>>>>>>> ROUND: ", self.rounds)
         print('Move to end: ', self.tail.value)
         print('>> Tail value? ', self.tail.value)
-        # print('>> Tail Prev value? ', self.tail.prev.value)
+        print('>> Tail Prev value? ', self.tail.prev.value)
         print('>> Head value? ', self.head.value)
         print('>> NODE VALUE? ', node.value)
         print('>> Length? ', self.length)
