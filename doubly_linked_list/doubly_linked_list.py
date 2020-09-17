@@ -168,7 +168,7 @@ class DoublyLinkedList:
     """
 
     def delete(self, node):
-
+        self.length -= 1
         if self.head == None:
             pass
         elif self.head == node:
