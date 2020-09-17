@@ -22,6 +22,7 @@ class DoublyLinkedList:
         self.head = node
         self.tail = node
         self.length = 1 if node is not None else 0
+        self.rounds = 1
 
     def __len__(self):
         return self.length
@@ -41,6 +42,12 @@ class DoublyLinkedList:
         else:
             new_node.next = self.head
             self.head = new_node
+
+        print(">>>>>>>>>>>>>>> ROUND: ", self.rounds)
+        print('Add to head: ', self.head.value)
+        print('>> Head value? ', self.head.value)
+        print('>> Tail value? ', self.tail.value)
+
     """
     Removes the List's current head node, making the
     current head's next node the new head of the List.
@@ -77,6 +84,12 @@ class DoublyLinkedList:
         else:
             new_node.prev = self.tail
             self.tail = new_node
+
+        print(">>>>>>>>>>>>>>> ROUND: ", self.rounds)
+        print('Add to tail: ', self.tail.value)
+        print('>> Head value? ', self.head.value)
+        print('>> New tail value? ', self.tail.value)
+        # print('>> Head next value? ', self.head.next.value)
     """
     Removes the List's current tail node, making the 
     current tail's previous node the new tail of the List.
@@ -115,9 +128,26 @@ class DoublyLinkedList:
     List and inserts it as the new tail node of the List.
     """
 
+    def count(self):
+        self.rounds += 1
+        return self.rounds
+
     def move_to_end(self, node):
-        node.prev = self.tail
-        self.tail = node
+        if self.length == 2:
+            node.prev = self.tail
+            self.tail = node
+            self.head = node.prev
+        else:
+            # node.prev = self.tail
+            # self.tail = node
+            pass
+        print(">>>>>>>>>>>>>>> ROUND: ", self.rounds)
+        print('Move to end: ', self.tail.value)
+        print('>> Tail value? ', self.tail.value)
+        # print('>> Tail Prev value? ', self.tail.prev.value)
+        print('>> Head value? ', self.head.value)
+        print('>> NODE VALUE? ', node.value)
+        print('>> Length? ', self.length)
 
     """
     Deletes the input node from the List, preserving the 
