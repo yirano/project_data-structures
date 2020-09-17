@@ -97,8 +97,8 @@ class DoublyLinkedList:
         print(">>>>>>>>>>>>>>> ROUND: ", self.rounds)
         print('Add to tail: ', self.tail.value)
         print('>> Head value? ', self.head.value)
-        if self.length >= 2:
-            print('>> Head NEXT? ', self.head.next.value)
+        # if self.length >= 2:
+        #     print('>> Head NEXT? ', self.head.next.value)
         # print('>> Head next value? ', self.head.next.value)
         # print('>> Tail prev value? ', self.tail.prev.value)
         print('>> New tail value? ', self.tail.value)
@@ -195,4 +195,34 @@ class DoublyLinkedList:
     """
 
     def get_max(self):
-        pass
+        if self.length == 1:
+            print('LENGTH: ', self.length)
+            print('Current TAIL ', self.tail.value)
+
+            return self.head.value
+        elif self.length == 2:
+            print('LENGTH: ', self.length)
+            print('Current TAIL ', self.tail.value)
+            if self.head.value > self.tail.value:
+                return self.head.value
+            else:
+                return self.tail.value
+        else:
+            print('LENGTH: ', self.length)
+            print('Current TAIL ', self.tail.value)
+
+            temp = self.head
+            max_value = self.head.value
+            print('STARTING MAX value', max_value)
+
+            while(temp.next != None):
+                if temp.value > temp.prev.value:
+                    print(' MAX value 1', max_value)
+                    max_value = temp.value
+                    temp = temp.next
+                else:
+                    print(' MAX value 2', max_value)
+                    max_value = temp.prev.value
+                    temp = temp.next
+
+                return max_value

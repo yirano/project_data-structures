@@ -101,7 +101,7 @@ class DoublyLinkedListTests(unittest.TestCase):
         self.assertEqual(self.dll.head.value, 3)
         self.assertEqual(self.dll.head.next.value, 29)
         self.assertEqual(len(self.dll), 3)
-    '''
+    
 
     def test_list_delete(self):
         self.dll.delete(self.node)
@@ -112,7 +112,6 @@ class DoublyLinkedListTests(unittest.TestCase):
         #########################################
 
         self.dll.add_to_tail(1)
-        self.dll.count()
         self.dll.add_to_head(9)
         self.dll.count()
         self.dll.add_to_tail(6)
@@ -135,16 +134,20 @@ class DoublyLinkedListTests(unittest.TestCase):
         self.assertEqual(len(self.dll), 0)
     '''
 
-    # def test_get_max(self):
-    #     self.assertEqual(self.dll.get_max(), 1)
-    #     self.dll.add_to_tail(100)
-    #     self.assertEqual(self.dll.get_max(), 100)
-    #     self.dll.add_to_tail(55)
-    #     self.assertEqual(self.dll.get_max(), 100)
-    #     self.dll.add_to_tail(101)
-    #     self.assertEqual(self.dll.get_max(), 101)
+    def test_get_max(self):
+        self.assertEqual(self.dll.get_max(), 1)
+        self.dll.add_to_tail(100)
+        self.dll.count()
 
-    '''
+        self.assertEqual(self.dll.get_max(), 100)
+        self.dll.add_to_tail(55)
+        self.dll.count()
+
+        self.assertEqual(self.dll.get_max(), 100)
+        self.dll.add_to_tail(101)
+        self.dll.count()
+
+        self.assertEqual(self.dll.get_max(), 101)
 
 
 if __name__ == '__main__':
