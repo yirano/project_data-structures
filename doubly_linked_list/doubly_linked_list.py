@@ -168,15 +168,16 @@ class DoublyLinkedList:
             self.remove_from_tail()
         else:
             temp = self.head
-            while(temp.next != None):
+            while(temp is not None):  # should delete ONE
                 if (temp == node):
-                    self.head = node
-                    self.remove_from_head()
-                    self.head = node.next
+                    self.tail = node
+                    self.remove_from_tail()
+                    self.tail = node.prev
                 temp = temp.next
+                print("HI ", self.head.value, node.value)
 
         print('DELETE: ', node.value)
-        print('Head next value: ', self.head.next.value)
+        # print('Head next value: ', self.head.next.value)
     """
     Finds and returns the maximum value of all the nodes 
     in the List.
