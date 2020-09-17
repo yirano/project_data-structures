@@ -89,8 +89,8 @@ class DoublyLinkedList:
         print(">>>>>>>>>>>>>>> ROUND: ", self.rounds)
         print('Add to tail: ', self.tail.value)
         print('>> Head value? ', self.head.value)
-        print('>> Head next value? ', self.head.next.value)
-        print('>> Tail prev value? ', self.tail.prev.value)
+        # print('>> Head next value? ', self.head.next.value)
+        # print('>> Tail prev value? ', self.tail.prev.value)
         print('>> New tail value? ', self.tail.value)
         # print('>> Head next value? ', self.head.next.value)
     """
@@ -158,8 +158,25 @@ class DoublyLinkedList:
     """
 
     def delete(self, node):
-        return f'HI'
 
+        if self.head == None:
+            pass
+        elif self.head == node:
+            self.remove_from_head()
+
+        elif self.tail == node:
+            self.remove_from_tail()
+        else:
+            temp = self.head
+            while(temp.next != None):
+                if (temp == node):
+                    self.head = node
+                    self.remove_from_head()
+                    self.head = node.next
+                temp = temp.next
+
+        print('DELETE: ', node.value)
+        print('Head next value: ', self.head.next.value)
     """
     Finds and returns the maximum value of all the nodes 
     in the List.
