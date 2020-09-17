@@ -39,12 +39,19 @@ class DoublyLinkedList:
         if self.head is None and self.tail is None:
             self.head = new_node
             self.tail = new_node
+
         else:
+            temp = self.head
             new_node.next = self.head
             self.head = new_node
-
+            while(temp):
+                if(temp == None):
+                    temp = self.tail
+                temp = temp.next
         print(">>>>>>>>>>>>>>> ROUND: ", self.rounds)
         print('Add to head: ', self.head.value)
+        if self.length >= 2:
+            print('>> Head NEXT? ', self.head.next.value)
         print('>> Head value? ', self.head.value)
         print('>> Tail value? ', self.tail.value)
 
@@ -66,6 +73,7 @@ class DoublyLinkedList:
             return head_value
         self.length -= 0
         head_value = self.head.value
+        # self.tail = self.head.next
         self.head = self.head.next
         return head_value
 
@@ -84,11 +92,13 @@ class DoublyLinkedList:
         else:
             new_node.prev = self.tail
             self.tail = new_node
-            self.head.next = new_node.prev
+            # self.head.next = new_node.prev
 
         print(">>>>>>>>>>>>>>> ROUND: ", self.rounds)
         print('Add to tail: ', self.tail.value)
         print('>> Head value? ', self.head.value)
+        if self.length >= 2:
+            print('>> Head NEXT? ', self.head.next.value)
         # print('>> Head next value? ', self.head.next.value)
         # print('>> Tail prev value? ', self.tail.prev.value)
         print('>> New tail value? ', self.tail.value)
@@ -167,17 +177,18 @@ class DoublyLinkedList:
         elif self.tail == node:
             self.remove_from_tail()
         else:
-            temp = self.head
-            while(temp is not None):  # should delete ONE
-                if (temp == node):
-                    self.tail = node
-                    self.remove_from_tail()
-                    self.tail = node.prev
-                temp = temp.next
-                print("HI ", self.head.value, node.value)
+            print('>> Head 1: ', self.head.value, self.tail.value)
+            self.move_to_front(node)
+            print('>> Move to front: ', self.head.value, self.tail.value)
+            self.remove_from_head()
+            print('>> Removed from head: ', self.head.value, self.tail.value)
+            self.head.next = self.tail
+            print('>> Tail 4: ', self.head.value, self.tail.value)
+            # print('>> Head 4', self.head.value, self.tail.value)
+            # print("HI ", self.head.value, node.value)
 
         print('DELETE: ', node.value)
-        # print('Head next value: ', self.head.next.value)
+        # print('Head next value: ', self.head.value)
     """
     Finds and returns the maximum value of all the nodes 
     in the List.
