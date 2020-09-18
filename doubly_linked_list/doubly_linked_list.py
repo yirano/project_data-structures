@@ -12,7 +12,7 @@ class ListNode:
 
 
 """
-Our doubly-linked list class. It holds references to 
+Our doubly-linked list class. It holds references to
 the list's head and tail nodes.
 """
 
@@ -28,8 +28,8 @@ class DoublyLinkedList:
         return self.length
 
     """
-    Wraps the given value in a ListNode and inserts it 
-    as the new head of the list. Don't forget to handle 
+    Wraps the given value in a ListNode and inserts it
+    as the new head of the list. Don't forget to handle
     the old head node's previous pointer accordingly.
     """
 
@@ -48,12 +48,6 @@ class DoublyLinkedList:
                 if(temp == None):
                     temp = self.tail
                 temp = temp.next
-        print(">>>>>>>>>>>>>>> ROUND: ", self.rounds)
-        print('Add to head: ', self.head.value)
-        if self.length >= 2:
-            print('>> Head NEXT? ', self.head.next.value)
-        print('>> Head value? ', self.head.value)
-        print('>> Tail value? ', self.tail.value)
 
     """
     Removes the List's current head node, making the
@@ -78,33 +72,31 @@ class DoublyLinkedList:
         return head_value
 
     """
-    Wraps the given value in a ListNode and inserts it 
-    as the new tail of the list. Don't forget to handle 
+    Wraps the given value in a ListNode and inserts it
+    as the new tail of the list. Don't forget to handle
     the old tail node's next pointer accordingly.
     """
 
     def add_to_tail(self, value):
+        print("Add this to tail: ", value)
         self.length += 1
         new_node = ListNode(value)
         if self.head is None and self.tail is None:
             self.head = new_node
             self.tail = new_node
         else:
-            new_node.prev = self.tail
-            self.tail = new_node
-            # self.head.next = new_node.prev
+            temp = self.head
+            # new_node.prev = self.tail
+            # self.tail = new_node
+            while(temp):
+                if(temp.next == None):
+                    new_node.prev = self.tail
+                    self.tail = new_node
+                    break
+                temp = temp.next
 
-        print(">>>>>>>>>>>>>>> ROUND: ", self.rounds)
-        print('Add to tail: ', self.tail.value)
-        print('>> Head value? ', self.head.value)
-        # if self.length >= 2:
-        #     print('>> Head NEXT? ', self.head.next.value)
-        # print('>> Head next value? ', self.head.next.value)
-        # print('>> Tail prev value? ', self.tail.prev.value)
-        print('>> New tail value? ', self.tail.value)
-        # print('>> Head next value? ', self.head.next.value)
     """
-    Removes the List's current tail node, making the 
+    Removes the List's current tail node, making the
     current tail's previous node the new tail of the List.
     Returns the value of the removed Node.
     """
@@ -125,7 +117,7 @@ class DoublyLinkedList:
         return tail_value
 
     """
-    Removes the input node from its current spot in the 
+    Removes the input node from its current spot in the
     List and inserts it as the new head node of the List.
     """
 
@@ -137,7 +129,7 @@ class DoublyLinkedList:
             self.head = node  # the new self.head is the node
 
     """
-    Removes the input node from its current spot in the 
+    Removes the input node from its current spot in the
     List and inserts it as the new tail node of the List.
     """
 
@@ -146,21 +138,24 @@ class DoublyLinkedList:
         return self.rounds
 
     def move_to_end(self, node):
-        if self.length == 2:
-            node.prev = self.tail
-            self.tail = node
-            self.head = node.prev
-        else:
-            node.prev = self.tail
-            self.tail = node
-            pass
-        print(">>>>>>>>>>>>>>> ROUND: ", self.rounds)
-        print('Move to end: ', self.tail.value)
-        print('>> Tail value? ', self.tail.value)
-        print('>> Tail Prev value? ', self.tail.prev.value)
-        print('>> Head value? ', self.head.value)
-        print('>> NODE VALUE? ', node.value)
-        print('>> Length? ', self.length)
+        print('CURRENT LENGTH: ', self.length)
+        print('Before/HEAD: ', self.head.value)
+        print('Before/HEAD NEXT: ', self.head.next.value)
+        print('Before/TAIL: ', self.tail.value)
+        print('-----------------')
+
+        temp = self.head
+        while(temp):
+            if(temp is self.tail):
+                node.prev = self.tail
+                self.tail = node
+                break
+            temp = temp.next
+        print('After/HEAD: ', self.head.value)
+        print('After/HEAD NEXT: ', self.head.next.value)
+        print('After/TAIL: ', self.tail.value)
+        # node.prev = self.tail
+        # self.tail = node
 
     """
     Deletes the input node from the List, preserving the 
@@ -177,17 +172,10 @@ class DoublyLinkedList:
         elif self.tail == node:
             self.remove_from_tail()
         else:
-            print('>> Head 1: ', self.head.value, self.tail.value)
             self.move_to_front(node)
-            print('>> Move to front: ', self.head.value, self.tail.value)
             self.remove_from_head()
-            print('>> Removed from head: ', self.head.value, self.tail.value)
             self.head.next = self.tail
-            print('>> Tail 4: ', self.head.value, self.tail.value)
-            # print('>> Head 4', self.head.value, self.tail.value)
-            # print("HI ", self.head.value, node.value)
 
-        print('DELETE: ', node.value)
         # print('Head next value: ', self.head.value)
     """
     Finds and returns the maximum value of all the nodes 
@@ -195,34 +183,23 @@ class DoublyLinkedList:
     """
 
     def get_max(self):
-        if self.length == 1:
-            print('LENGTH: ', self.length)
-            print('Current TAIL ', self.tail.value)
+        if self.length == 0:
+            return None
+        elif self.length == 1:
 
             return self.head.value
         elif self.length == 2:
-            print('LENGTH: ', self.length)
-            print('Current TAIL ', self.tail.value)
             if self.head.value > self.tail.value:
                 return self.head.value
             else:
                 return self.tail.value
         else:
-            print('LENGTH: ', self.length)
-            print('Current TAIL ', self.tail.value)
-
+            print(self.tail.value)
             temp = self.head
-            max_value = self.head.value
-            print('STARTING MAX value', max_value)
-
-            while(temp.next != None):
-                if temp.value > temp.prev.value:
-                    print(' MAX value 1', max_value)
+            max_value = temp.value
+            count = 0
+            while(temp.next is not None):
+                if temp.value > temp.next.value:
                     max_value = temp.value
-                    temp = temp.next
-                else:
-                    print(' MAX value 2', max_value)
-                    max_value = temp.prev.value
-                    temp = temp.next
 
-                return max_value
+                temp = temp.next
