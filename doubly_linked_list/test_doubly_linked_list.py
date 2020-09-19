@@ -8,6 +8,7 @@ class DoublyLinkedListTests(unittest.TestCase):
         self.node = ListNode(1)
         self.dll = DoublyLinkedList(self.node)
     '''
+
     def test_list_remove_from_tail(self):
         self.dll.remove_from_tail()
         self.assertIsNone(self.dll.head)
@@ -25,6 +26,7 @@ class DoublyLinkedListTests(unittest.TestCase):
         self.assertEqual(len(self.dll), 1)
         self.assertEqual(self.dll.remove_from_tail(), 68)
         self.assertEqual(len(self.dll), 0)
+
 
     def test_list_remove_from_head(self):
         self.dll.remove_from_head()
@@ -57,7 +59,6 @@ class DoublyLinkedListTests(unittest.TestCase):
         self.assertEqual(self.dll.tail.prev.value, 30)
         self.assertEqual(self.dll.tail.value, 20)
         self.assertEqual(len(self.dll), 3)
-
     def test_list_add_to_head(self):
         self.assertEqual(self.dll.head.value, 1)
 
@@ -86,6 +87,7 @@ class DoublyLinkedListTests(unittest.TestCase):
         self.assertEqual(len(self.dll), 3)
         print('************************************* Passed')
     '''
+
     def test_list_move_to_front(self):
         self.dll.add_to_tail(3)
         self.assertEqual(self.dll.head.value, 1)
@@ -108,16 +110,11 @@ class DoublyLinkedListTests(unittest.TestCase):
         self.assertIsNone(self.dll.tail)
         self.assertEqual(len(self.dll), 0)
 
-        #########################################
-
         self.dll.add_to_tail(1)
         self.dll.add_to_head(9)
-        self.dll.count()
         self.dll.add_to_tail(6)
-        self.dll.count()
 
         self.dll.delete(self.dll.head.next)
-        self.dll.count()
         self.assertEqual(self.dll.head.value, 9)
         self.assertEqual(self.dll.head.next, self.dll.tail)  # Breaking here
         self.assertEqual(self.dll.tail.value, 6)
@@ -135,15 +132,12 @@ class DoublyLinkedListTests(unittest.TestCase):
     def test_get_max(self):
         self.assertEqual(self.dll.get_max(), 1)
         self.dll.add_to_tail(100)
-        self.dll.count()
 
         self.assertEqual(self.dll.get_max(), 100)
         self.dll.add_to_tail(55)
-        self.dll.count()
 
         self.assertEqual(self.dll.get_max(), 100)
         self.dll.add_to_tail(101)
-        self.dll.count()
 
         self.assertEqual(self.dll.get_max(), 101)
     '''
