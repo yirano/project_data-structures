@@ -32,7 +32,7 @@ class BSTNode:
                 self.left = BSTNode(value)
 
         # elif new value >= self.value
-        else:
+        elif self.value <= value:
             # if self.right is already taken by node
             if self.right != None:
                 # make that (right) node call insert
@@ -69,7 +69,11 @@ class BSTNode:
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        max_value = self.value
+        while(self.right):
+            max_value = self.right
+
+        return max_value
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
@@ -129,6 +133,3 @@ bst.in_order_print()
 print("post order")
 bst.post_order_dft()
 '''
-
-
-
