@@ -70,7 +70,10 @@ class BSTNode:
     # Return the maximum value found in the tree
     def get_max(self):
 
-        max_value = self.right
+        if self.right is None:
+            max_value = self.value
+        else:
+            max_value = self.right.value
 
         return max_value
 
