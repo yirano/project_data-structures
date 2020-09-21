@@ -49,8 +49,8 @@ class BSTNode:
             return True
         # compare the target to current value
         # if current value < target
-        found = False
-        if self.value < target:
+        # found = False
+        if self.value > target:
             # check the left substree
             # if you cannot go left, return False
             if self.left is None:
@@ -58,7 +58,7 @@ class BSTNode:
             found = self.left.contains(target)
 
         # elif current value >= target
-        if self.value >= target:
+        if self.value <= target:
             # check if right subtree contains target
             # if you cannot go right, return False
             if self.right is None:
@@ -69,9 +69,8 @@ class BSTNode:
 
     # Return the maximum value found in the tree
     def get_max(self):
-        max_value = self.value
-        while(self.right):
-            max_value = self.right
+
+        max_value = self.right
 
         return max_value
 
