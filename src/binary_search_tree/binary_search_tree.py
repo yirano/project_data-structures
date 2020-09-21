@@ -21,20 +21,29 @@ class BSTNode:
     def insert(self, value):
         # take the current value of our node (self.value)
         # compare to the new value we want to insert
-
         # if new value < self.value
-        # if self.left is already taken by a node
-        # make that (left) node, call insert
-        # set the left to the new node with the new value
+        if self.value > value:
+            # if self.left is already taken by a node
+            if self.left != None:
+                # make that (left) node, call insert
+                self.left.insert(value)
+            else:
+                # set the left to the new node with the new value
+                self.left = BSTNode(value)
 
         # elif new value >= self.value
-        # if self.right is already taken by node
-        # make that (right) node call insert
-        # set the right child to the new node with new value
-        pass
+        else:
+            # if self.right is already taken by node
+            if self.right != None:
+                # make that (right) node call insert
+                self.right.insert(value)
+            # set the right child to the new node with new value
+            else:
+                self.right = BSTNode(value)
 
     # Return True if the tree contains the value
     # False if it does not
+
     def contains(self, target):
         if self.value == target:
             return True
@@ -46,7 +55,7 @@ class BSTNode:
             # if you cannot go left, return False
             if self.left is None:
                 return False
-            found = self.left.containers(target)
+            found = self.left.contains(target)
 
         # elif current value >= target
         if self.value >= target:
@@ -98,6 +107,7 @@ class BSTNode:
 """
 This code is necessary for testing the `print` methods
 """
+'''
 bst = BSTNode(1)
 
 bst.insert(8)
@@ -118,3 +128,7 @@ print("in order")
 bst.in_order_print()
 print("post order")
 bst.post_order_dft()
+'''
+
+
+
