@@ -12,6 +12,16 @@ class LinkedList:
         self.head = None  # stores a node that corresponds to our first node in the list
         self.tail = None  # stores a node that is at the end of the list
 
+    # return allvalues in the lsit a -> b-> c -> d -> None
+    def __str__(self):
+        output = ''
+        current_node = self.head  # create a tracker node variable
+        while current_node is not None:  # loop until it's None
+            output += f'{current_node.value} -> '
+            # update the tracker node to the next node
+            current_node = current_node.next_node
+        return output
+
     def add_to_head(self, value):
         # create a node to add
         new_node = Node(value)
@@ -38,7 +48,7 @@ class LinkedList:
             self.tail = new_node
 
     # remove the head and return its value
-    def remove_head(self, value):
+    def remove_head(self):
         # if list is empty do nothing
         if not self.head:
             return None
@@ -54,7 +64,7 @@ class LinkedList:
         self.head = self.head.next_node
         return head_value
 
-    def len(self):
+    def __len__(self):
         temp = self.head
         count = 0
         while(temp):
