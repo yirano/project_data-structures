@@ -96,16 +96,43 @@ class BSTNode:
     # Hint:  Use a recursive, depth first traversal
 
     def in_order_print(self):
-        pass
+        if self.left:
+            self.left.in_order_print()
+        print(self.value)
+        if self.right:
+            self.right.in_order_print()
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self):
-        pass
+        # create a queue for nodes
+        queue = []
+        # add the first node to the queue
+        queue.append(self.value)
+        # while queue is not empty
+        while(len(queue) != 0):
+            # remove the first node from the queue
+            # print the removed node
+            print(queue.pop(0))
+            # add all children into the queue
+            if self.left:
+                queue.append(self.left)
+                return
+            if self.right:
+                queue.append(self.right)
+                return
+            pass
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self):
+        # create a stack for nodes
+        # add the first node to the stack
+        # while the stack is not empty
+            # get the current node from the top of the stack
+            # print that node
+            # add all children to the stack
+            # keep in mind, the order you add the children, will matter
         pass
 
     # Stretch Goals -------------------------
@@ -123,7 +150,6 @@ class BSTNode:
 """
 This code is necessary for testing the `print` methods
 """
-'''
 bst = BSTNode(1)
 
 bst.insert(8)
@@ -144,4 +170,3 @@ print("in order")
 bst.in_order_print()
 print("post order")
 bst.post_order_dft()
-'''
