@@ -110,29 +110,28 @@ class BSTNode:
         # add the first node to the queue
         queue.append(self.value)
         # while queue is not empty
-        while(len(queue) != 0):
+        while(len(queue) > 0):
             # remove the first node from the queue
             # print the removed node
             print(queue.pop(0))
             # add all children into the queue
             if self.left:
                 queue.append(self.left)
-                return
+
             if self.right:
                 queue.append(self.right)
-                return
-            pass
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
+
     def dft_print(self):
         # create a stack for nodes
         # add the first node to the stack
         # while the stack is not empty
-            # get the current node from the top of the stack
-            # print that node
-            # add all children to the stack
-            # keep in mind, the order you add the children, will matter
+        # get the current node from the top of the stack
+        # print that node
+        # add all children to the stack
+        # keep in mind, the order you add the children, will matter
         pass
 
     # Stretch Goals -------------------------
@@ -160,6 +159,7 @@ bst.insert(3)
 bst.insert(4)
 bst.insert(2)
 
+print("bft_print")
 bst.bft_print()
 bst.dft_print()
 

@@ -88,8 +88,12 @@ class DoublyLinkedList:
     """
 
     def remove_from_head(self):
-        if self.head is None:
-            return
+        if self.head == self.tail:
+            head_value = self.head.value
+            self.head = None
+            self.tail = None
+            self.length -= 1
+            return head_value
         else:
             head_value = self.head.value
             self.delete(self.head)
