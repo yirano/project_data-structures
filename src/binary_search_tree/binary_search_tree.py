@@ -67,13 +67,12 @@ class BSTNode:
 
         return found
 
-    # Return the maximum value found in the tree
     def get_max(self):
-        # current = self
 
         # while(current.right):
         #     current = current.right
         # return current.value
+
         if self.right is None:
             return self.value
         return self.right.get_max()
@@ -90,11 +89,6 @@ class BSTNode:
             if self.right is not None:
                 self.right.for_each(fn)
 
-    # Part 2 -----------------------
-
-    # Print all the values in order from low to high
-    # Hint:  Use a recursive, depth first traversal
-
     def in_order_print(self):
         if self.left:
             self.left.in_order_print()
@@ -102,27 +96,20 @@ class BSTNode:
         if self.right:
             self.right.in_order_print()
 
-    # Print the value of every node, starting with the given node,
-    # in an iterative breadth first traversal
     def bft_print(self):
-        # create a queue for nodes
         queue = []
-        # add the first node to the queue
+        if self.value is None:
+            return
         queue.append(self.value)
-        # while queue is not empty
+        current = queue[0]
         while(len(queue) > 0):
-            # remove the first node from the queue
-            # print the removed node
-            print(queue.pop(0))
-            # add all children into the queue
-            if self.left:
-                queue.append(self.left)
-
-            if self.right:
-                queue.append(self.right)
-
-    # Print the value of every node, starting with the given node,
-    # in an iterative depth first traversal
+            remove = queue.pop(0)
+            print(remove)
+            if current.left:
+                queue.append(current.left)
+            if current.right:
+                queue.append(current.right)
+            current.bft_print()
 
     def dft_print(self):
         # create a stack for nodes
