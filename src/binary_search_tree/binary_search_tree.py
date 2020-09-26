@@ -98,28 +98,41 @@ class BSTNode:
 
     def bft_print(self):
         queue = []
-        if self.value is None:
-            return
+        current = None
+
+        if not self.value:
+            pass
         queue.append(self.value)
-        current = queue[0]
-        while(len(queue) > 0):
-            remove = queue.pop(0)
-            print(remove)
+
+        if self.left:
+            queue.append(self.left)
+        if self.right:
+            queue.append(self.right)
+
+        print(queue.pop(0))
+
+        while len(queue) != 0:
+            current = queue[0]
+
+            if current.left:
+                queue.append(current.left)
+
+            if current.right:
+                queue.append(current.right)
+
+            print(queue.pop(0))
+
+    def dft_print(self):
+        queue = []
+        queue.append(self)
+
+        while len(queue) != 0:
+            current = queue.pop()
+            print(current)
             if current.left:
                 queue.append(current.left)
             if current.right:
                 queue.append(current.right)
-            current.bft_print()
-
-    def dft_print(self):
-        # create a stack for nodes
-        # add the first node to the stack
-        # while the stack is not empty
-        # get the current node from the top of the stack
-        # print that node
-        # add all children to the stack
-        # keep in mind, the order you add the children, will matter
-        pass
 
     # Stretch Goals -------------------------
     # Note: Research may be required
